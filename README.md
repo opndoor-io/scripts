@@ -40,7 +40,7 @@ It checks nginx, SSL certificate, 3x-ui status, firewall, and DNS — without ch
 
 Once the server is set up, you need to create a VLESS connection through the 3x-ui panel.
 
-Step-by-step guide with screenshots: [opndoor.io](https://opndoor.io)
+Step-by-step guide with screenshots: [opndoor.io]([https://opndoor.io](https://opndoor.io/ru/guides/svoj-vpn-server-za-15-minut-vless-tls-svoj-domen))
 
 ## License
 
