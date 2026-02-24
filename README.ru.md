@@ -40,7 +40,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/ma
 
 После установки сервера необходимо создать VLESS-подключение через панель 3x-ui.
 
-Пошаговая инструкция со скриншотами: [opndoor.io](https://opndoor.io)
+Пошаговая инструкция со скриншотами: [opndoor.io]([https://opndoor.io](https://opndoor.io/ru/guides/svoj-vpn-server-za-15-minut-vless-tls-svoj-domen))
 
 ## Лицензия
 
