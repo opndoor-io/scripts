@@ -346,11 +346,8 @@ print_summary() {
     echo -e "  ${BOLD}Ключ:${NC}            /etc/letsencrypt/live/${DOMAIN}/privkey.pem"
     echo ""
     echo -e "  ${BOLD}Что дальше:${NC}"
-    echo -e "  1. Откройте панель 3x-ui в браузере: ${CYAN}https://${DOMAIN}:<порт_панели>${NC}"
-    echo -e "  2. Создайте VLESS-подключение через интерфейс панели"
-    echo -e "  3. Отсканируйте QR-код в клиенте (v2rayNG, Hiddify, Streisand)"
-    echo ""
-    echo -e "  ${BOLD}Полный гайд:${NC} ${CYAN}https://opndoor.io${NC}"
+    echo -e "  Создайте VLESS-подключение в панели 3x-ui по инструкции:"
+    echo -e "  ${CYAN}https://opndoor.io${NC}"
     echo ""
 }
 
