@@ -517,12 +517,68 @@ echo ""
 echo "Всего: $(jq '.inbounds[0].settings.clients | length' "$CONFIG")"
 TOOLEOF
 
+    # ── xray-reconfig ──
+    cat > /usr/local/bin/xray-reconfig <<'TOOLEOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+[[ $EUID -eq 0 ]] || { echo "Запустите от root (sudo)"; exit 1; }
+
+CONFIG="/usr/local/etc/xray/config.json"
+[[ -f "$CONFIG" ]] || { echo "Конфиг не найден: $CONFIG"; exit 1; }
+
+CURRENT=$(jq -r '.inbounds[0].streamSettings.network' "$CONFIG")
+
+if [[ "${1:-}" == "tcp" || "${1:-}" == "xhttp" ]]; then
+    TARGET="$1"
+elif [[ -n "${1:-}" ]]; then
+    echo "Использование: xray-reconfig [tcp|xhttp]"
+    exit 1
+else
+    if [[ "$CURRENT" == "tcp" ]]; then
+        TARGET="xhttp"
+    else
+        TARGET="tcp"
+    fi
+fi
+
+if [[ "$CURRENT" == "$TARGET" ]]; then
+    echo "Уже используется $TARGET"
+    exit 0
+fi
+
+cp "$CONFIG" "$CONFIG.bak.$(date +%Y%m%d_%H%M%S)"
+
+TMP=$(mktemp)
+if [[ "$TARGET" == "tcp" ]]; then
+    jq '
+      .inbounds[0].streamSettings.network = "tcp" |
+      .inbounds[0].settings.clients[].flow = "xtls-rprx-vision" |
+      del(.inbounds[0].streamSettings.xhttpSettings) |
+      .inbounds[0].sniffing.destOverride = ["http","tls"]
+    ' "$CONFIG" > "$TMP" && mv "$TMP" "$CONFIG"
+else
+    jq '
+      .inbounds[0].streamSettings.network = "xhttp" |
+      .inbounds[0].settings.clients[].flow = "" |
+      .inbounds[0].streamSettings.xhttpSettings = {"path": "/"} |
+      .inbounds[0].sniffing.destOverride = ["http","tls","quic"]
+    ' "$CONFIG" > "$TMP" && mv "$TMP" "$CONFIG"
+fi
+
+systemctl restart xray
+echo "Транспорт переключён: $CURRENT → $TARGET"
+echo ""
+xray-sharelink
+TOOLEOF
+
     chmod +x /usr/local/bin/xray-sharelink
     chmod +x /usr/local/bin/xray-adduser
     chmod +x /usr/local/bin/xray-rmuser
     chmod +x /usr/local/bin/xray-userlist
+    chmod +x /usr/local/bin/xray-reconfig
 
-    success "CLI-утилиты установлены: xray-sharelink, xray-adduser, xray-rmuser, xray-userlist"
+    success "CLI-утилиты установлены: xray-sharelink, xray-adduser, xray-rmuser, xray-userlist, xray-reconfig"
 }
 
 # ─── Итог ─────────────────────────────────────────────────────────────────────
