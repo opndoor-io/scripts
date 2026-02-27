@@ -3,7 +3,7 @@ set -uo pipefail
 
 # =============================================================================
 # Диагностика VPN-сервера (VLESS + TLS)
-# https://github.com/opndoor-io/vless-tls-server/tree/main/vless-tls-server
+# https://github.com/opndoor-io/scripts/tree/main/vless-tls-server
 # =============================================================================
 
 # ─── Цвета и форматирование ──────────────────────────────────────────────────

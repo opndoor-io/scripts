@@ -3,7 +3,7 @@ set -euo pipefail
 
 # =============================================================================
 # OPN Door — Установка VPN-сервера (VLESS + TLS) через собственный домен
-# https://github.com/opndoor-io/vless-tls-server/tree/main/vless-tls-server
+# https://github.com/opndoor-io/scripts/tree/main/vless-tls-server
 #
 # Требования: Ubuntu 24, root-доступ, домен с A-записью на IP сервера
 # =============================================================================

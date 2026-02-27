@@ -23,7 +23,7 @@
 ## Быстрый старт
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/vless-tls-server/install.sh)
 ```
 
 Скрипт запросит домен и email, проверит DNS и проведёт вас через каждый шаг.
@@ -33,7 +33,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/ma
 Если что-то не работает — запустите скрипт диагностики:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/check.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/vless-tls-server/check.sh)
 ```
 
 Проверяет nginx, SSL-сертификат, статус 3x-ui, файрвол и DNS — ничего не меняет.

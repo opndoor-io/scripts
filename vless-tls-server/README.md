@@ -23,7 +23,7 @@ Automated VLESS + TLS VPN server setup with your own domain.
 ## Quick start
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/vless-tls-server/install.sh)
 ```
 
 The script will ask for your domain and email, verify DNS, and walk you through each step.
@@ -33,7 +33,7 @@ The script will ask for your domain and email, verify DNS, and walk you through 
 If something doesn't work — run the diagnostic script:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/check.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/vless-tls-server/check.sh)
 ```
 
 It checks nginx, SSL certificate, 3x-ui status, firewall, and DNS — without changing anything.

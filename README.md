@@ -17,7 +17,7 @@ Each folder contains a self-contained tool with its own installation script and 
 Every script can be run with a single command — no need to clone the repo:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/vless-tls-server/install.sh)
 ```
 
 See each folder's README for details.

@@ -17,7 +17,7 @@
 Каждый скрипт запускается одной командой — клонировать репозиторий не нужно:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/vless-tls-server/install.sh)
 ```
 
 Подробности — в README каждой папки.
