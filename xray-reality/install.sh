@@ -619,6 +619,7 @@ print_summary() {
     echo -e "  ${BOLD}xray-adduser${NC} <имя>      — добавить пользователя"
     echo -e "  ${BOLD}xray-rmuser${NC} <имя>       — удалить пользователя"
     echo -e "  ${BOLD}xray-userlist${NC}            — список пользователей"
+    echo -e "  ${BOLD}xray-reconfig${NC} [tcp|xhttp] — переключить транспорт"
     echo ""
 }
 

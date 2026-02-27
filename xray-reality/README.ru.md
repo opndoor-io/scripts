@@ -40,6 +40,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/scripts/main/xray-r
 | `xray-adduser <имя>` | Добавить пользователя |
 | `xray-rmuser <имя>` | Удалить пользователя |
 | `xray-userlist` | Список пользователей |
+| `xray-reconfig [tcp\|xhttp]` | Переключить транспорт без переустановки |
 
 ## TCP vs XHTTP
 

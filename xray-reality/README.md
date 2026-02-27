@@ -40,6 +40,7 @@ After installation, these commands are available:
 | `xray-adduser <name>` | Add a new user |
 | `xray-rmuser <name>` | Remove a user |
 | `xray-userlist` | List all users |
+| `xray-reconfig [tcp\|xhttp]` | Switch transport without reinstalling |
 
 ## TCP vs XHTTP
 
