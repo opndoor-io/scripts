@@ -203,11 +203,17 @@ generate_keys() {
     info "Генерирую ключи..."
 
     local key_output
-    key_output=$(xray x25519)
-    PRIVATE_KEY=$(echo "$key_output" | grep -oP 'Private key: \K.*')
-    PUBLIC_KEY=$(echo "$key_output" | grep -oP 'Public key: \K.*')
+    key_output=$(xray x25519 2>&1)
 
-    UUID=$(xray uuid)
+    PRIVATE_KEY=$(echo "$key_output" | awk '/Private key:/ {print $NF}')
+    PUBLIC_KEY=$(echo "$key_output" | awk '/Public key:/ {print $NF}')
+
+    [[ -n "$PRIVATE_KEY" ]] || error "Не удалось получить приватный ключ из xray x25519"
+    [[ -n "$PUBLIC_KEY" ]]  || error "Не удалось получить публичный ключ из xray x25519"
+
+    UUID=$(xray uuid 2>&1)
+    [[ -n "$UUID" ]] || error "Не удалось сгенерировать UUID"
+
     SHORT_ID=$(openssl rand -hex 8)
 
     mkdir -p "$XRAY_CONFIG_DIR"
