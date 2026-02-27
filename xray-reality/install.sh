@@ -205,15 +205,13 @@ generate_keys() {
     local key_output
     key_output=$(xray x25519 2>&1)
 
-    # v26+: "PrivateKey: ...", старые версии: "Private key: ..."
+    # v26+: "PrivateKey: ..." + "Password: ..." (публичный ключ)
+    # старые версии: "Private key: ..." + "Public key: ..."
     PRIVATE_KEY=$(echo "$key_output" | awk '/PrivateKey:|Private key:/ {print $NF}')
-    [[ -n "$PRIVATE_KEY" ]] || error "Не удалось получить приватный ключ из xray x25519"
+    PUBLIC_KEY=$(echo "$key_output" | awk '/Password:|Public key:/ {print $NF}')
 
-    # Публичный ключ выводится отдельно через -i
-    local pub_output
-    pub_output=$(xray x25519 -i "$PRIVATE_KEY" 2>&1)
-    PUBLIC_KEY=$(echo "$pub_output" | awk '/PublicKey:|Public key:/ {print $NF}')
-    [[ -n "$PUBLIC_KEY" ]] || error "Не удалось получить публичный ключ из xray x25519 -i"
+    [[ -n "$PRIVATE_KEY" ]] || error "Не удалось получить приватный ключ из xray x25519"
+    [[ -n "$PUBLIC_KEY" ]]  || error "Не удалось получить публичный ключ из xray x25519"
 
     UUID=$(xray uuid 2>&1)
     [[ -n "$UUID" ]] || error "Не удалось сгенерировать UUID"
