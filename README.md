@@ -1,46 +1,26 @@
-# vless-tls-server
+# OPN Door Scripts
 
 **English** | [Русский](README.ru.md)
 
-Automated VLESS + TLS VPN server setup with your own domain.
+Open-source scripts for setting up VPN tools — designed for users in countries with internet censorship.
 
-## What does the script do
+Each folder contains a self-contained tool with its own installation script and documentation.
 
-1. Installs required packages (nginx, certbot)
-2. Configures nginx for your domain (ACME challenge + HTTPS redirect)
-3. Obtains a free SSL certificate from Let's Encrypt
-4. Sets up automatic certificate renewal with a deploy hook
-5. Launches the [3x-ui](https://github.com/mhsanaei/3x-ui) panel installer (interactive — you complete it yourself)
+## Available scripts
 
-## Requirements
+| Script | Description |
+|--------|-------------|
+| [vless-tls-server](vless-tls-server/) | VLESS + TLS server setup with your own domain (nginx, certbot, 3x-ui) |
 
-- **VPS** with Ubuntu 24 and root access
-- **Domain** with an A record pointing to your server's IP
-- **Ports 80 and 443** open (check your provider's firewall)
+## How it works
 
-## Quick start
+Every script can be run with a single command — no need to clone the repo:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/vless-tls-server/install.sh)
 ```
 
-The script will ask for your domain and email, verify DNS, and walk you through each step.
-
-## Diagnostics
-
-If something doesn't work — run the diagnostic script:
-
-```bash
-bash <(curl -Ls https://raw.githubusercontent.com/opndoor-io/vless-tls-server/main/check.sh)
-```
-
-It checks nginx, SSL certificate, 3x-ui status, firewall, and DNS — without changing anything.
-
-## After installation
-
-Once the server is set up, you need to create a VLESS connection through the 3x-ui panel.
-
-Step-by-step guide with screenshots: [opndoor.io]([https://opndoor.io](https://opndoor.io/ru/guides/svoj-vpn-server-za-15-minut-vless-tls-svoj-domen))
+See each folder's README for details.
 
 ## License
 
