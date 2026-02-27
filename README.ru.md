@@ -11,6 +11,7 @@
 | Скрипт | Описание |
 |--------|----------|
 | [vless-tls-server](vless-tls-server/) | Установка VLESS + TLS сервера с собственным доменом (nginx, certbot, 3x-ui) |
+| [xray-reality](xray-reality/) | Установка VLESS + Reality сервера на Xray-core — без домена |
 
 ## Как это работает
 

@@ -11,6 +11,7 @@ Each folder contains a self-contained tool with its own installation script and 
 | Script | Description |
 |--------|-------------|
 | [vless-tls-server](vless-tls-server/) | VLESS + TLS server setup with your own domain (nginx, certbot, 3x-ui) |
+| [xray-reality](xray-reality/) | VLESS + Reality server setup with Xray-core — no domain required |
 
 ## How it works
 
