@@ -413,9 +413,10 @@ else
 fi
 
 if [[ "$TRANSPORT" == "tcp" ]]; then
-    LINK="vless://${UUID}@${SERVER_IP}:${PORT}?type=tcp&security=reality&pbk=${PUBLIC_KEY}&fp=chrome&sni=${SNI}&sid=${SHORT_ID}&flow=xtls-rprx-vision#${NAME}"
+    LINK="vless://${UUID}@${SERVER_IP}:${PORT}?type=${TRANSPORT}&security=reality&pbk=${PUBLIC_KEY}&fp=chrome&sni=${SNI}&sid=${SHORT_ID}&flow=xtls-rprx-vision#${NAME}"
 else
-    LINK="vless://${UUID}@${SERVER_IP}:${PORT}?type=xhttp&security=reality&pbk=${PUBLIC_KEY}&fp=chrome&sni=${SNI}&sid=${SHORT_ID}&path=%2F#${NAME}"
+    SPATH=$(jq -r '.inbounds[0].streamSettings.xhttpSettings.path' "$CONFIG")
+    LINK="vless://${UUID}@${SERVER_IP}:${PORT}?type=${TRANSPORT}&security=reality&pbk=${PUBLIC_KEY}&fp=chrome&sni=${SNI}&sid=${SHORT_ID}&path=${SPATH}#${NAME}"
 fi
 
 echo ""
